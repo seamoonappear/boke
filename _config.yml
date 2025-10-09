@@ -1,94 +1,48 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# 站点基本设置
+title: "海上升明月"
+name: "海上升明月"
+description: "记录技术与生活的点点滴滴"
+locale: "zh-CN"
+url: "https://seamoonappear.github.io"
+baseurl: "/boke"
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: MM
-email:
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
-minimal_mistakes_skin: default
+# 作者信息
+author:
+  name: "王维"
+  avatar: "/boke/assets/images/bio-photo.jpg"
+  bio: "一个热爱技术与分享的开发者"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/seamoonappear"
+
+# 主题设置
+remote_theme: mmistakes/minimal-mistakes
+minimal_mistakes_skin: "default"
 search: true
 
-# Build settings
-markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
-# Outputting
-permalink: /:categories/:title/
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+# 移除 Follow 按钮
+follow:
+  button: false
 
-include:
-  - _pages
+# 评论设置 (Giscus配置)
+comments:
+  provider: "giscus"
+  giscus:
+    repo: "seamoonappear/boke"
+    repo-id: ""  # 需要在Giscus官网获取
+    category: "Announcements"
+    category-id: ""  # 需要在Giscus官网获取
+    mapping: "pathname"
+    reactions-enabled: "1"
+    theme: "preferred_color_scheme"
+    emit-metadata: "0"
+    input-position: "bottom"
+    lang: "zh-CN"
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-
-# Plugins (previously gems:)
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-  - jekyll-include-cache
-
-author:
-  name   : "First Lastname"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
-  links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
-
-footer:
-  links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
-
+# 默认 Front Matter
 defaults:
-  # _posts
+  # 对所有文章应用的默认设置
   - scope:
       path: ""
       type: posts
@@ -99,17 +53,201 @@ defaults:
       comments: true
       share: true
       related: true
-  # _pages
+      toc: true
+      show_date: true
+  # 对页面应用的默认设置
   - scope:
       path: "_pages"
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
 
+# 插件
+plugins:
+  - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+
+# 网站设置
+sitemap: true
+feed:
+  path: atom.xml
+
+# 分页设置
+paginate: 5
+paginate_path: /page:num/
+
+# 构建设置
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# 包含的文件和目录
+include:
+  - _pages
+  - .well-known
+  - _includes
+  - _sass
+  - assets
+
+# 排除的文件和目录
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/scripts.min.js
+  - assets/js/vendor
+  - Capfile
+  - CHANGELOG
+  - config
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json
+  - Rakefile
+  - README
+  - tmp
+  - vendor
+  - Gemfile.lock
+
+# 集合配置
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:title/
+
+# 分类和标签存档
 category_archive:
   type: liquid
   path: /categories/
 tag_archive:
   type: liquid
   path: /tags/
+
+# 社交媒体分享 (可选)
+social:
+  type: Person
+  name: "王维"
+  links:
+    - "https://github.com/seamoonappear"
+
+# 网站图标
+favicon: /assets/images/favicon.ico
+
+# 搜索引擎优化
+seo:
+  name: "海上升明月"
+  description: "记录技术与生活的点点滴滴"
+  author: "王维"
+  social:
+    name: "王维"
+    links:
+      - "https://github.com/seamoonappear"
+
+# 网站头部设置
+header:
+  overlay_image: /assets/images/header-bg.jpg  # 可选头部背景图
+  overlay_filter: 0.5  # 背景图遮罩透明度
+  actions:
+    - label: "了解更多"
+      url: "/about/"
+
+# 页脚设置
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/seamoonappear"
+    - label: "关于"
+      icon: "fas fa-fw fa-user"
+      url: "/about/"
+
+# 阅读时间设置
+read_time: true
+
+# 相关文章设置
+related: true
+
+# 分享按钮设置
+share: true
+
+# 文章导航设置
+post_pagination: true
+
+# 语法高亮设置
+syntax_highlighter: rouge
+syntax_highlighter_opts:
+  block:
+    line_numbers: true
+
+# 图片路径设置
+image_path: /assets/images/
+
+# 默认图片 (可选)
+default_image:
+  path: "/assets/images/bio-photo.jpg"
+  caption: "默认图片说明"
+
+# 网站统计 (可选)
+analytics:
+  provider: "google"
+  google:
+    tracking_id: ""  # 你的Google Analytics跟踪ID
+
+# 网站验证 (可选)
+webmaster_verifications:
+  google: ""  # 你的Google网站验证码
+  bing: ""    # 你的Bing网站验证码
+  alexa: ""   # 你的Alexa验证码
+  yandex: ""  # 你的Yandex验证码
+
+# 额外的head内容 (可选)
+head_scripts:
+  - /assets/js/custom.js
+
+# 额外的样式 (可选)
+extra_css:
+  - /assets/css/custom.css
+
+# 网站时区
+timezone: Asia/Shanghai
+
+# 网站语言
+lang: zh-CN
+
+# 网站编码
+encoding: utf-8
+
+# 网站构建时忽略的文件
+ignore_files:
+  - README.md
+  - LICENSE
+  - CNAME
+  - .gitignore
+
+# 自定义变量
+custom:
+  site_description: "个人技术博客，分享开发经验和生活感悟"
+  site_keywords: "技术,编程,开发,博客,学习"
+  copyright: "© 2025 海上升明月. 基于Minimal Mistakes主题构建."
